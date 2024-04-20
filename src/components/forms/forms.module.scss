@@ -1,0 +1,43 @@
+@import '../../index.scss';
+.form__card {
+	padding: 40px 0;
+}
+.title {
+	font-size: 32px;
+	font-weight: 500;
+	margin-bottom: 20px;
+}
+.input__blocks {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+.input__block {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	width: 200px;
+}
+ .input {
+	height: 40px;
+	border: 1px solid grey;
+	border-radius: 8px;
+	padding-left: 10px;
+}
+.input__block  > label {
+	font-size: 16px;
+	color: rgb(69, 69, 69);
+}
+.button {
+	width: 50%;
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 25px;
+}
+.button > button {
+	padding: 10px 15px;
+	background-color: $primaryColor;
+	border-radius: 8px;
+	color: white;
+	font-size: 15px;
+}

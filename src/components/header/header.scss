@@ -1,0 +1,46 @@
+@import '../../index.scss';
+
+.header {
+	padding: 30px 0;
+	border-bottom: 1px solid rgb(220, 220, 220);
+}
+.header__container {
+	display: flex;
+	justify-content: space-between;
+}
+.header__title {
+	font-size: 32px;
+	font-weight: 600;
+	color: $primaryColor;
+}
+.header__button {
+	padding: 10px 20px;
+	border-radius: 10px;
+	background-color: $primaryColor;
+	color: white;
+	font-size: 16px;
+	transition: 0.3s ease;
+}
+.header__button:hover {
+	transition: 0.3s ease;
+	background-color: $primaryColorDark;
+}
+.nav {
+	display: flex;
+	align-items: center;
+}
+.items {
+	display: flex;
+	gap: 25px;
+}
+.item > a {
+	display: inline-block;
+	color: $primaryColor;
+	font-weight: 500;
+	transition: 0.3s ease;
+	font-size: 15px;
+}
+.item > a:hover {
+	transform: translateY(2px);
+	transition: 0.3s ease;
+}
