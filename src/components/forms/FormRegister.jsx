@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ApiService from '../../API/ApiService';
 
 const FormRegister = () => {
@@ -8,9 +8,10 @@ const FormRegister = () => {
   const passportRegex = /^[0-9]{4} [0-9]{6}$/;
 
   const { register, handleSubmit } = useForm();
+	const navigate = useNavigate()
 
   const onSubmit = (data) => {
-    ApiService.sendingDateReg(data, setError);
+    ApiService.sendingDateReg(data, setError, navigate);
     console.log(data);
   };
   return (

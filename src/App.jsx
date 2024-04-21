@@ -8,7 +8,8 @@ import Auth from './pages/Auth';
 import Moderator from './pages/Moderator';
 import NotFoundPage from './pages/NotFoundPage';
 import Register from './pages/Register';
-import UserNotCard from './pages/UserNotCard';
+import Events from './pages/Events';
+import Home from './pages/Home';
 
 function App() {
   const refresh = localStorage.getItem('refresh');
@@ -26,10 +27,11 @@ function App() {
         <Route path="/login" element={<Auth />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFoundPage />} />
-        <Route path="/home" element={<UserNotCard />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/create-card" element={<CreateCard />} />
         <Route path="/form-card" element={<FormCard />} />
-        <Route path="/admin" element={<Moderator />} />
+        <Route path="/moderator" element={<Moderator />} />
+        <Route path="/events" element={<Events />} />
       </Routes>
     </div>
   );

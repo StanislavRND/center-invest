@@ -14,14 +14,14 @@ const FormCard = () => {
 
   const onSubmit = (data) => {
     if (isOwnerCard) {
-      ApiService.sendingDateCard('Общий', userId, data.certificate[0]);
+      ApiService.sendingDateCard('Льготный', userId, data.certificate[0]);
     } else {
-      ApiService.sendingDateCard('Льготный', userId);
+      ApiService.sendingDateCard('Общий', userId);
     }
     console.log(data);
   };
   React.useEffect(() => {
-    ApiService.infoUser(setUserId);
+    ApiService.infoUserId(setUserId);
   }, []);
 
   return (
