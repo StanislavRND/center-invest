@@ -30,10 +30,10 @@ const Header = () => {
                     <Link to="/events">Мероприятия</Link>
                   </li>
                   <li className="item">
-                    <Link to="/">Запись к врачу</Link>
+                    <Link to="/record-doctor">Запись к врачу</Link>
                   </li>
 									<li className="item">
-                    <Link to="/">Отделения банка</Link>
+                    <Link to="/departments">Отделения банка</Link>
                   </li>
                 </>
               )}

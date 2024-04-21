@@ -6,7 +6,7 @@ const Applications = ({ items, userId, setItems }) => {
 
 	const handleChange = (itemId) => {
 		console.log(itemId);
-		ApiService.changeStatusCard(itemId, userId, setIsModal, setItems)
+		ApiService.changeStatusCard(itemId, setIsModal, setItems)
 	}
 
   return (

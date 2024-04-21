@@ -31,11 +31,11 @@ const FormRegister = () => {
             <div style={{ display: 'flex', gap: '8px' }}>
               <div>
                 <label>Серия паспорта</label>
-                <input type="text" className="input__reg" {...register('passport_series')} />
+                <input type="text" className="input__reg" {...register('passport_series')} maxLength={4} />
               </div>
               <div>
                 <label>Номер паспорта</label>
-                <input type="text" className="input__reg" {...register('passport_number')} />
+                <input type="text" className="input__reg" {...register('passport_number')} maxLength={6} />
               </div>
             </div>
           </div>

@@ -1,0 +1,31 @@
+@import '../../../index.scss';
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+.item {
+  border: 2px solid $primaryColor;
+	border-radius: 10px;
+	padding: 10px;
+}
+.price__block {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+}
+.title {
+	font-size: 22px;
+	font-weight: 500;
+	margin-bottom: 10px;
+}
+.button {
+	padding: 10px 25px;
+	background-color: $primaryColor;
+	color: white;
+	border-radius: 8px;
+	margin-top: 15px;
+}

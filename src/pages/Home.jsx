@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ApiService from '../API/ApiService';
 import Header from '../components/header/Header';
 import UserNotCard from '../components/main/userNotCard/UserNotCard';
 import UserIsCard from '../components/main/userIsCard/UserIsCard';
 
 const Home = () => {
-  const [isCard, setIsCard] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isCard, setIsCard] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+	const [card, setCard] = useState([]);
 
   useEffect(() => {
-    ApiService.infoUserCard(setIsCard, setIsLoading);
+    ApiService.infoUserCard(setIsCard, setIsLoading, setCard);
   }, []);
   return (
     <>
       <Header />
       <div className="container">
-        {isLoading ? <div>Загрузка...</div> : <>{isCard ? <UserIsCard /> : <UserNotCard />} </>}
+        {isLoading ? <div>Загрузка...</div> : <>{isCard ? <UserIsCard card={card} /> : <UserNotCard />} </>}
       </div>
     </>
   );

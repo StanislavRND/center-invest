@@ -1,0 +1,74 @@
+@import '../../../index.scss';
+
+.block__card {
+  padding: 40px 0;
+}
+
+.card {
+  height: 250px;
+  width: 400px;
+  background-color: rgb(224, 224, 224);
+  border: 1px solid $primaryColor;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease; /* Добавляем анимацию для свойства transform */
+}
+
+.name {
+  font-size: 18px;
+  color: $primaryColor;
+  font-weight: 500;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.number {
+  font-size: 28px;
+  font-weight: 400;
+  color: #2e2e2e;
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;
+}
+
+.desc {
+  font-size: 32px;
+  font-weight: 600;
+  color: rgb(83, 83, 83);
+	margin-bottom: 8px;
+	margin-top: 25px;
+}
+.details {
+	font-size: 18px;
+	text-decoration: underline;
+	cursor: pointer;
+	color: $primaryColor;
+}
+.money {
+	display: flex;
+	gap: 20px;
+}
+.block {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.money > button {
+	height: 40px;
+	padding: 0 20px;
+
+	border-radius: 8px;
+	color: white;
+	font-size: 16px;
+}
+.replenish {
+	background-color: rgb(117, 117, 117);
+}
+.plastic {
+	background-color: $primaryColor;
+}
+
+
+

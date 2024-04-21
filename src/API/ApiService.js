@@ -22,7 +22,6 @@ export default class ApiService {
   static async sendingDateReg(data, setError, navigate) {
     try {
       await axiosInstanсe.post('/jwt-auth/register-user/', data).then(() => {
-				navigate('/home')
 			});
     } catch {
       setError('Ваш регион не Ростовская область');
@@ -34,7 +33,7 @@ export default class ApiService {
     axiosInstanсe.post('/jwt-auth/get-token/', data).then((response) => {
       localStorage.setItem('access', response.data.access);
       localStorage.setItem('refresh', response.data.refresh);
-      navigate('/home');
+			ApiService.infoUserIsCard(navigate);
     });
   }
   // Функция для обновления токена
@@ -43,7 +42,7 @@ export default class ApiService {
       axiosInstanсe
         .post('/jwt-auth/refresh-token/', { refresh: refresh })
         .then((response) => {
-          const newToken = response.data.token;
+          const newToken = response.data.access;
           localStorage.setItem('access', newToken);
         });
     } catch (error) {
@@ -74,7 +73,7 @@ export default class ApiService {
     try {
       await axiosInstanсe.get('/api/cards/').then((res) => {
 				const itemsBenefit = res.data.filter(item => item.status === 'Отправлена на модерацию');
-				console.log(itemsBenefit);
+				console.log(res.data);
 				setItems(itemsBenefit)
 			})
     } catch (e) {
@@ -82,9 +81,9 @@ export default class ApiService {
     }
   }
 	// Изменение статуса карты
-	static async changeStatusCard(id, userId, setIsModal, setItems) {
+	static async changeStatusCard(id, setIsModal, setItems) {
     try {
-      await axiosInstanсe.put(`/api/cards/${id}/`, {status: 'Принята', category: 'Льготный', owner: userId}).then(() => {
+      await axiosInstanсe.patch(`/api/cards/${id}/`, {status: 'Принята', category: 'Льготный'}).then(() => {
 				ApiService.getCards(setItems)
 				setIsModal(false);
 			})
@@ -117,12 +116,13 @@ export default class ApiService {
 			setIsLoading(false)
     }
   }
-	static async infoUserCard(setUserCard, setIsLoading) {
+	static async infoUserCard(setUserCard, setIsLoading, setCard) {
     try {
       axiosInstanсe.get('/jwt-auth/user-info/').then((res) => {
-				console.log(res.data);
-        const isCard = res.data.cards.length >= 1 ? true : false;
-        setUserCard(isCard);
+        const items = res.data.cards.map(item => item.status === 'Принята');
+				console.log(items);
+        setUserCard(items[0]);
+				setCard(res.data.cards)
 				setIsLoading(false)
       });
     } catch (e) {
@@ -130,4 +130,48 @@ export default class ApiService {
 			setIsLoading(false)
     }
   }
+	static async infoUserIsCard(navigate) {
+    try {
+      axiosInstanсe.get('/jwt-auth/user-info/').then((res) => {
+        const isAdmin = res.data.is_staff;
+				if (isAdmin) {
+					navigate('/moderator')
+				} else {
+					navigate('/home')
+				}
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+// Получение всех мероприятий
+	static async getEvents(setEvents) {
+    try {
+      axiosInstanсe.get('/api/events/').then((res) => {
+				setEvents(res.data);
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+	// Получение всех маркеров больницы
+	static async getMarkerHospitals(setMarker) {
+    try {
+      axiosInstanсe.get('/api/hospitals/').then((res) => {
+				setMarker(res.data);
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+	static async getMarkerBanks(setMarker) {
+    try {
+      axiosInstanсe.get('/api/banks/').then((res) => {
+				setMarker(res.data);
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+	
 }
